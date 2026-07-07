@@ -71,6 +71,17 @@ both, in the same commit.
   will need a real layout pass.
 - No tests yet.
 
+## Design vault
+
+Full design-of-record (playbook Stages 1–7) lives in [`docs/design/`](./design/) — one file per
+entity/journey, with an ERD and a numbered decision log. This brief stays terse; the vault holds the
+depth. Where they differ, re-sync this brief to the **validated** vault.
+
 ## Superseded Guidance
 
-_(none yet — log reversals here as they happen, so stale notes don't mislead.)_
+- **2026-07-06 — "Local-first for the MVP" (2026-07-01) is superseded.** The full four-view,
+  multi-user vision (accounts, branch-scoped roles, invitations, shared data) cannot run on a
+  local-only `localStorage` store. **Supabase is now the source of truth** (Postgres + Auth +
+  Storage + RLS), with a local *read* cache for offline viewing. See design vault **AD-1**
+  (`docs/design/04-architecture/decisions.md`). Local-first as the *whole* backend is retired;
+  the offline cache preserves its responsiveness benefit.
